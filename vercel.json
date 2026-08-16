@@ -1,0 +1,18 @@
+{
+  "rewrites": [
+    {
+      "source": "/invoice-generator",
+      "destination": "/invoice-generator.html"
+    },
+    {
+      "source": "/((?!api/|_next/|_static/|[\\w-]+\\.\\w+).*)",
+      "destination": "/index.html"
+    }
+  ],
+  "crons": [
+    {
+      "path": "/api/cron-check-subscriptions",
+      "schedule": "0 0 * * *"
+    }
+  ]
+}

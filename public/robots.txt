@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /
+
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Facebot
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+Sitemap: https://www.kayana.web.id/sitemap.xml

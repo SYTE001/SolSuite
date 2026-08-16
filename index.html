@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SoloSuite — Aplikasi Invoice, Proposal & Pembayaran Otomatis Freelancer</title>
+  <meta name="description" content="Kelola klien, buat invoice profesional, dan terima pembayaran otomatis via Midtrans dalam satu tempat. Solusi manajemen bisnis freelance paling simpel di Indonesia.">
+  <meta name="keywords" content="aplikasi invoice freelance, tools bisnis freelancer, payment gateway freelancer, buat proposal online, kelola klien freelance">
+  <link rel="canonical" href="https://www.kayana.web.id/">
+  
+  <!-- OpenGraph / Social Share Preview -->
+  <meta property="og:title" content="SoloSuite — Invoices. Payments. Done.">
+  <meta property="og:description" content="Platform manajemen bisnis freelance terlengkap. Buat invoice otomatis dan terima pembayaran tanpa konfirmasi manual.">
+  <meta property="og:image" content="https://www.kayana.web.id/assets/og-image.png">
+  <meta property="og:image:secure_url" content="https://www.kayana.web.id/assets/og-image.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:url" content="https://www.kayana.web.id/">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://www.kayana.web.id/">
+  <meta name="twitter:image" content="https://www.kayana.web.id/assets/og-image.png">
+  <meta property="fb:app_id" content="966242223397117">
+  <link rel="stylesheet" href="/src/style.css">
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- html2pdf.js for Client-Side PDF Generation -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <!-- Midtrans Snap JS (dynamically loaded via app.js when checkout is initiated) -->
+</head>
+<body>
+  <!-- Auth Intro Video Loading Screen -->
+  <div id="intro-loader" style="position: fixed; inset: 0; z-index: 99999; background: #000000; display: flex; align-items: center; justify-content: center; opacity: 1; transition: opacity 0.5s ease;">
+    <video id="intro-video" autoplay muted playsinline style="max-width: 480px; width: 90%; height: auto;">
+      <source src="/src/assets/solosuite-intro.mp4" type="video/mp4">
+      <source src="/assets/solosuite-intro.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <div id="app" class="auth-pending">
+    <!-- Quiet Sidebar Navigation -->
+    <aside class="sidebar" id="sidebar">
+      <div class="brand">
+        <svg class="solosuite-logo-icon" style="width:28px; height:28px;" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="12" y="12" width="76" height="76" rx="22" ry="22" stroke="currentColor" stroke-width="7" fill="none"/>
+          <path d="M 38 40 C 38 28 50 24 60 28 C 70 32 74 44 68 54 C 64 60 56 62 56 60" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          <path d="M 62 60 C 62 72 50 76 40 72 C 30 68 26 56 32 46 C 36 40 44 38 44 40" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          <circle cx="38" cy="40" r="4.5" fill="currentColor"/>
+          <circle cx="62" cy="60" r="4.5" fill="currentColor"/>
+          <circle cx="56" cy="60" r="4.5" fill="currentColor"/>
+          <circle cx="44" cy="40" r="4.5" fill="currentColor"/>
+        </svg>
+        <div class="brand-title">SoloSuite</div>
+        <button class="btn-icon sidebar-close" id="btn-close-sidebar" type="button" aria-label="Close navigation">
+          <i data-lucide="x"></i>
+        </button>
+      </div>
+
+      <nav class="nav-menu">
+        <a class="nav-item active" data-page="dashboard" href="/app/dashboard">
+          <i data-lucide="layout-grid"></i>
+          <span>Overview</span>
+        </a>
+        <a class="nav-item" data-page="invoices" href="/app/invoices">
+          <i data-lucide="receipt"></i>
+          <span>Invoices</span>
+          <span class="badge" id="badge-overdue-count" style="display:none;">0</span>
+        </a>
+        <a class="nav-item" data-page="proposals" href="/app/proposals">
+          <i data-lucide="file-text"></i>
+          <span>Proposals</span>
+        </a>
+        <a class="nav-item" data-page="reminders" href="/app/reminders">
+          <i data-lucide="bell"></i>
+          <span>Reminders</span>
+          <span class="badge" id="badge-reminders-due" style="display:none;">0</span>
+        </a>
+        <a class="nav-item" data-page="clients" href="/app/clients">
+          <i data-lucide="users"></i>
+          <span>Clients</span>
+        </a>
+
+        <div style="height: 12px;"></div>
+        <div class="nav-section-title">Account</div>
+
+        <a class="nav-item" data-page="pricing" href="/app/pricing">
+          <i data-lucide="sparkles"></i>
+          <span>Plan</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="user-profile-row">
+          <div class="user-avatar" id="user-avatar-text">AF</div>
+          <div class="user-info">
+            <div class="user-name" id="user-display-name">Alex Freelancer</div>
+            <div class="user-plan" id="user-display-plan">Pro</div>
+          </div>
+          <button class="btn-icon" id="btn-logout" title="Logout" style="background:none; border:none; color:var(--text-dim); cursor:pointer; padding:4px;">
+            <i data-lucide="log-out" style="font-size:0.9rem;"></i>
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Mobile Sidebar Drawer Backdrop -->
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+    <!-- Main Workspace Shell -->
+    <div class="main-wrapper">
+      <header class="top-header">
+        <div class="header-left">
+          <button class="btn-icon mobile-toggle" id="btn-toggle-sidebar" aria-label="Toggle Navigation">
+            <i data-lucide="menu"></i>
+          </button>
+          <div class="header-title">
+            <h1 id="page-title">Good day, Alex.</h1>
+            <p id="page-subtitle">Here's what needs your attention.</p>
+          </div>
+        </div>
+
+        <div class="header-center">
+          <span class="mobile-header-title" id="mobile-page-title">SoloSuite</span>
+        </div>
+
+        <div class="header-actions">
+          <button class="btn-icon" id="btn-theme-toggle" title="Toggle Light/Dark Theme" aria-label="Toggle Theme">
+            <i data-lucide="sun" id="theme-icon"></i>
+          </button>
+          <button class="btn btn-primary btn-create-action" id="btn-global-add" title="Create New">
+            <i data-lucide="plus"></i>
+            <span class="btn-text">Create</span>
+            <span class="kbd-shortcut">⌘K</span>
+          </button>
+        </div>
+      </header>
+
+      <main class="page-content" id="main-content">
+        <!-- Dynamic Page View Injected Here -->
+      </main>
+      
+      <!-- Mobile Bottom Navigation -->
+      <nav class="mobile-bottom-nav" id="mobile-bottom-nav">
+        <a class="mobile-nav-item active" data-page="dashboard" href="/app/dashboard">
+          <i data-lucide="layout-grid"></i>
+          <span>Overview</span>
+        </a>
+        <a class="mobile-nav-item" data-page="invoices" href="/app/invoices">
+          <i data-lucide="receipt"></i>
+          <span>Invoices</span>
+        </a>
+        <a class="mobile-nav-item" data-page="proposals" href="/app/proposals">
+          <i data-lucide="file-text"></i>
+          <span>Proposals</span>
+        </a>
+        <a class="mobile-nav-item" data-page="clients" href="/app/clients">
+          <i data-lucide="users"></i>
+          <span>Clients</span>
+        </a>
+        <button type="button" class="mobile-nav-item" id="btn-mobile-menu-trigger">
+          <i data-lucide="menu"></i>
+          <span>Menu</span>
+        </button>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Global Modal Container -->
+  <div class="modal-backdrop" id="modal-backdrop">
+    <div class="modal-dialog" id="modal-dialog">
+      <!-- Modal Content Injected Here -->
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <script type="module" src="/src/js/app.js"></script>
+</body>
+</html>
