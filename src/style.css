@@ -2542,4 +2542,14 @@ textarea.form-control {
   contain-intrinsic-size: 1px 300px;
 }
 
+.btn-google-auth:hover {
+  background: var(--bg-muted) !important;
+  border-color: var(--border-strong) !important;
+}
+
+.btn-google-auth:active {
+  transform: scale(0.99);
+}
+
+
 
