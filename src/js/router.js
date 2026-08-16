@@ -6,42 +6,18 @@ export class Router {
     this.onNavigate = onNavigate; // callback(pageName, params)
     this.onRouteStart = onRouteStart;
     this.isInitialAuthDone = false;
-    this.videoEnded = false;
     this.pendingAuthFinish = false;
     this.routeVersion = 0;
+    
+    this.appStartTime = Date.now();
+    this.minSplashDuration = 1000; // 1s minimum splash duration
 
-    this.setupVideoListener();
-
-    // Fallback Safety Timeout: 8 seconds max if video or network stalls
+    // Fallback Safety Timeout
     this.safetyTimeoutId = setTimeout(() => {
       this.finishInitialAuth();
-    }, 8000);
+    }, 3000);
 
     this.init();
-  }
-
-  setupVideoListener() {
-    const video = document.getElementById('intro-video');
-    if (!video) {
-      this.videoEnded = true;
-      return;
-    }
-
-    // Try playing video in case browser autoplay was deferred
-    video.play().catch(() => {});
-
-    if (video.ended) {
-      this.videoEnded = true;
-    } else {
-      const onEnd = () => {
-        this.videoEnded = true;
-        if (this.pendingAuthFinish) {
-          this.finishInitialAuth();
-        }
-      };
-      video.addEventListener('ended', onEnd, { once: true });
-      video.addEventListener('error', onEnd, { once: true });
-    }
   }
 
   init() {
@@ -134,13 +110,13 @@ export class Router {
   scheduleInitialAuthFinish() {
     if (this.isInitialAuthDone) return;
 
-    const video = document.getElementById('intro-video');
-
-    // Ensure video plays until its 'ended' event fires
-    if (this.videoEnded || !video || video.ended) {
+    const elapsed = Date.now() - this.appStartTime;
+    if (elapsed >= this.minSplashDuration) {
       this.finishInitialAuth();
     } else {
-      this.pendingAuthFinish = true;
+      setTimeout(() => {
+        this.finishInitialAuth();
+      }, this.minSplashDuration - elapsed);
     }
   }
 

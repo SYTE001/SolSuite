@@ -1,3 +1,4 @@
+import { createIcons, icons } from 'lucide';
 import { getCurrentUser, signOut } from '../lib/auth.js';
 import { supabase } from '../lib/supabase.js';
 import { renderAuthPage, attachAuthPageEvents } from './components/auth.js';
@@ -17,6 +18,20 @@ import { checkPlanLimits } from './utils/limits.js';
 import { Router } from './router.js';
 import { buildWhatsAppInvoiceUrl } from './utils/whatsapp.js';
 import { openCommandPalette } from './components/commandPalette.js';
+
+// Dynamic loader for html2pdf from installed npm package
+async function loadHtml2Pdf() {
+  if (window.html2pdf) return window.html2pdf;
+  try {
+    const module = await import('html2pdf.js');
+    const html2pdf = module.default || module;
+    window.html2pdf = html2pdf;
+    return html2pdf;
+  } catch (e) {
+    if (window.html2pdf) return window.html2pdf;
+    throw e;
+  }
+}
 
 // Currency Formatter
 function formatIDR(amount) {
@@ -703,15 +718,20 @@ class App {
     // It also prevents an old route from retaining interactive controls.
     mainContent.innerHTML = html;
     initCustomDropdowns(mainContent);
-    if (icons) this.queueIconRender();
+    if (icons) this.queueIconRender(mainContent);
     this.animatePageContent(mainContent);
   }
 
-  queueIconRender() {
+  queueIconRender(target = null) {
     if (this.iconRenderFrame) cancelAnimationFrame(this.iconRenderFrame);
     this.iconRenderFrame = requestAnimationFrame(() => {
       this.iconRenderFrame = null;
-      if (window.lucide) window.lucide.createIcons();
+      try {
+        const rootNode = (target && target instanceof HTMLElement && target.isConnected) ? target : document;
+        createIcons({ icons, nameAttr: 'data-lucide', root: rootNode });
+      } catch (e) {
+        if (window.lucide) window.lucide.createIcons();
+      }
     });
   }
 
@@ -1078,16 +1098,23 @@ class App {
                   const url = `${window.location.origin}/invoice-generator?inv=${encodeURIComponent(inv.invoiceNumber)}`;
                   navigator.clipboard.writeText(url).then(() => showToast('Link invoice berhasil disalin', 'success'));
                 });
-                document.getElementById('btn-export-pdf')?.addEventListener('click', () => {
+                document.getElementById('btn-export-pdf')?.addEventListener('click', async () => {
                   const element = document.getElementById('invoice-printable-area');
-                  if (window.html2pdf && element) {
-                    window.html2pdf().set({
-                      margin: 10,
-                      filename: `${inv.invoiceNumber}.pdf`,
-                      jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
-                    }).from(element).save();
-                  } else {
-                    window.print();
+                  if (element) {
+                    try {
+                      showToast('Generating PDF...', 'info');
+                      const opt = {
+                        margin: 10,
+                        filename: `${inv.invoiceNumber}.pdf`,
+                        image: { type: 'jpeg', quality: 0.98 },
+                        html2canvas: { scale: 2, useCORS: true },
+                        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+                      };
+                      const html2pdfLib = await loadHtml2Pdf();
+                      html2pdfLib().set(opt).from(element).save();
+                    } catch (e) {
+                      window.print();
+                    }
                   }
                 });
               }
@@ -1100,16 +1127,20 @@ class App {
                   const url = `${window.location.origin}/proposal-view?id=${encodeURIComponent(prop.id)}`;
                   navigator.clipboard.writeText(url).then(() => showToast('Link proposal berhasil disalin', 'success'));
                 });
-                document.getElementById('btn-export-pdf')?.addEventListener('click', () => {
+                document.getElementById('btn-export-pdf')?.addEventListener('click', async () => {
                   const element = document.getElementById('proposal-printable-area');
-                  if (window.html2pdf && element) {
-                    window.html2pdf().set({
-                      margin: 10,
-                      filename: `${prop.title}.pdf`,
-                      jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
-                    }).from(element).save();
-                  } else {
-                    window.print();
+                  if (element) {
+                    try {
+                      showToast('Generating PDF...', 'info');
+                      const html2pdfLib = await loadHtml2Pdf();
+                      html2pdfLib().set({
+                        margin: 10,
+                        filename: `${prop.title}.pdf`,
+                        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+                      }).from(element).save();
+                    } catch (e) {
+                      window.print();
+                    }
                   }
                 });
               }
@@ -1377,20 +1408,23 @@ class App {
           });
         });
 
-        document.getElementById('btn-export-pdf')?.addEventListener('click', () => {
+        document.getElementById('btn-export-pdf')?.addEventListener('click', async () => {
           const element = document.getElementById('invoice-printable-area');
-          if (window.html2pdf && element) {
-            showToast('Generating PDF...', 'info');
-            const opt = {
-              margin: 10,
-              filename: `${invoice.invoiceNumber}.pdf`,
-              image: { type: 'jpeg', quality: 0.98 },
-              html2canvas: { scale: 2, useCORS: true },
-              jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
-            };
-            window.html2pdf().set(opt).from(element).save();
-          } else {
-            window.print();
+          if (element) {
+            try {
+              showToast('Generating PDF...', 'info');
+              const opt = {
+                margin: 10,
+                filename: `${invoice.invoiceNumber}.pdf`,
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2, useCORS: true },
+                jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+              };
+              const html2pdfLib = await loadHtml2Pdf();
+              html2pdfLib().set(opt).from(element).save();
+            } catch (e) {
+              window.print();
+            }
           }
         });
       });

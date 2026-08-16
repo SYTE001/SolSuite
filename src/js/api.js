@@ -114,11 +114,12 @@ export class ApiService {
     localStorage.setItem(KEYS.USER, JSON.stringify(user));
   }
 
-  static async getClients() {
+  static async getClients(limit = 100) {
     const { data, error } = await supabase
       .from('clients')
-      .select('*')
-      .order('created_at', { ascending: false });
+      .select('id, name, email, phone, company, address, notes, status, created_at, user_id')
+      .order('created_at', { ascending: false })
+      .limit(limit);
     if (error) {
       console.error('Error fetching clients from Supabase:', error);
       showToast('Gagal memuat data klien: ' + error.message, 'error');
@@ -233,11 +234,12 @@ export class ApiService {
     };
   }
 
-  static async getInvoices() {
+  static async getInvoices(limit = 100) {
     const { data, error } = await supabase
       .from('invoices')
-      .select('*, clients(name)')
-      .order('created_at', { ascending: false });
+      .select('id, client_id, invoice_number, amount, status, payment_status, due_date, items, tax_rate, discount, created_at, user_id, clients(name)')
+      .order('created_at', { ascending: false })
+      .limit(limit);
     if (error) {
       console.error('Error fetching invoices from Supabase:', error);
       showToast('Gagal memuat data invoice: ' + error.message, 'error');
@@ -309,11 +311,12 @@ export class ApiService {
     };
   }
 
-  static async getProposals() {
+  static async getProposals(limit = 100) {
     const { data, error } = await supabase
       .from('proposals')
-      .select('*, clients(name)')
-      .order('created_at', { ascending: false });
+      .select('id, client_id, title, scope_of_work, timeline, budget, amount, terms, status, created_at, user_id, clients(name)')
+      .order('created_at', { ascending: false })
+      .limit(limit);
     if (error) {
       console.error('Error fetching proposals from Supabase:', error);
       showToast('Gagal memuat data proposal: ' + error.message, 'error');
@@ -396,11 +399,12 @@ export class ApiService {
     };
   }
 
-  static async getReminders() {
+  static async getReminders(limit = 100) {
     const { data, error } = await supabase
       .from('reminders')
-      .select('*')
-      .order('created_at', { ascending: false });
+      .select('id, title, due_date, remind_at, is_completed, note, notes, related_type, category, created_at, user_id')
+      .order('created_at', { ascending: false })
+      .limit(limit);
     if (error) {
       console.error('Error fetching reminders from Supabase:', error);
       showToast('Gagal memuat data pengingat: ' + error.message, 'error');

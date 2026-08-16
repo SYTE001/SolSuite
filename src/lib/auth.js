@@ -25,6 +25,22 @@ export async function signIn({ email, password }) {
   return data;
 }
 
+// Login / Register dengan Google OAuth PKCE
+export async function signInWithGoogle() {
+  const { data, error } = await supabase.auth.signInWithOAuth({
+    provider: 'google',
+    options: {
+      redirectTo: `${window.location.origin}/`,
+      queryParams: {
+        access_type: 'offline',
+        prompt: 'consent',
+      },
+    },
+  });
+  if (error) throw error;
+  return data;
+}
+
 // Logout User
 export async function signOut() {
   const { error } = await supabase.auth.signOut();

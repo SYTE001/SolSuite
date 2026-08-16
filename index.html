@@ -22,21 +22,45 @@
   <meta name="twitter:url" content="https://www.kayana.web.id/">
   <meta name="twitter:image" content="https://www.kayana.web.id/assets/og-image.png">
   <meta property="fb:app_id" content="966242223397117">
-  <link rel="stylesheet" href="/src/style.css">
-  <!-- Lucide Icons -->
-  <script src="https://unpkg.com/lucide@latest"></script>
-  <!-- html2pdf.js for Client-Side PDF Generation -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <script>
+    (function() {
+      try {
+        var theme = localStorage.getItem('freelance_theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', theme);
+      } catch (e) {}
+    })();
+  </script>
   <!-- Midtrans Snap JS (dynamically loaded via app.js when checkout is initiated) -->
 </head>
 <body>
-  <!-- Auth Intro Video Loading Screen -->
-  <div id="intro-loader" style="position: fixed; inset: 0; z-index: 99999; background: #000000; display: flex; align-items: center; justify-content: center; opacity: 1; transition: opacity 0.5s ease;">
-    <video id="intro-video" autoplay muted playsinline style="max-width: 480px; width: 90%; height: auto;">
-      <source src="/src/assets/solosuite-intro.mp4" type="video/mp4">
-      <source src="/assets/solosuite-intro.mp4" type="video/mp4">
-    </video>
+  <!-- Auth Intro Loading Screen -->
+  <div id="intro-loader" style="position: fixed; inset: 0; z-index: 99999; background: #0B0B0D; display: flex; align-items: center; justify-content: center; opacity: 1; transition: opacity 0.5s ease; flex-direction: column; gap: 12px;">
+    <div style="display: flex; align-items: center; justify-content: center; gap: 10px;">
+      <svg id="splash-logo-icon" style="width:36px; height:36px; color:#fff; opacity:0; transform:scale(0.96); transition: opacity 400ms cubic-bezier(0.25, 1, 0.5, 1), transform 400ms cubic-bezier(0.25, 1, 0.5, 1);" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="12" y="12" width="76" height="76" rx="22" ry="22" stroke="currentColor" stroke-width="7" fill="none"/>
+        <path d="M 38 40 C 38 28 50 24 60 28 C 70 32 74 44 68 54 C 64 60 56 62 56 60" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <path d="M 62 60 C 62 72 50 76 40 72 C 30 68 26 56 32 46 C 36 40 44 38 44 40" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <circle cx="38" cy="40" r="4.5" fill="currentColor"/>
+        <circle cx="62" cy="60" r="4.5" fill="currentColor"/>
+        <circle cx="56" cy="60" r="4.5" fill="currentColor"/>
+        <circle cx="44" cy="40" r="4.5" fill="currentColor"/>
+      </svg>
+      <div id="splash-logo-text" style="color:#fff; font-size:24px; font-weight:700; opacity:0; transition: opacity 200ms ease; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">SoloSuite</div>
+    </div>
   </div>
+  <script>
+    requestAnimationFrame(() => {
+      const icon = document.getElementById('splash-logo-icon');
+      const text = document.getElementById('splash-logo-text');
+      if (icon) {
+        icon.style.opacity = '1';
+        icon.style.transform = 'scale(1)';
+      }
+      setTimeout(() => {
+        if (text) text.style.opacity = '1';
+      }, 150);
+    });
+  </script>
 
   <div id="app" class="auth-pending">
     <!-- Quiet Sidebar Navigation -->

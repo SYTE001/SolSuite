@@ -1,8 +1,6 @@
-import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
+import { createClient } from '@supabase/supabase-js';
 
-// Browser vanilla tidak memiliki variabel `process.env`.
-// Anon Key aman diletakkan di client-side.
-const supabaseUrl = 'https://jxuehjrquddnaatrjeax.supabase.co';
-const supabaseAnonKey = 'sb_publishable_CsfUKrWEfNjCtmLvz-pV6A_GN_6dMqX';
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || 'https://jxuehjrquddnaatrjeax.supabase.co';
+const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY || 'sb_publishable_CsfUKrWEfNjCtmLvz-pV6A_GN_6dMqX';
 
-export const supabase = createClient(supabaseUrl, supabaseAnonKey);
+export const supabase = createClient(supabaseUrl, supabaseAnonKey);

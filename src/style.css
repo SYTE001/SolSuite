@@ -2534,3 +2534,12 @@ textarea.form-control {
   opacity: 1;
 }
 
+/* Mobile Performance Optimizations */
+.dashboard-chart-wrapper,
+.recent-invoices-card,
+.kanban-lane {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 300px;
+}
+
+

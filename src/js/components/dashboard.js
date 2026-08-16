@@ -42,10 +42,12 @@ export function getDashboardSkeletonHTML() {
 }
 
 export async function renderDashboard(formatIDR) {
-  const invoices = await ApiService.getInvoices();
-  const proposals = await ApiService.getProposals();
-  const reminders = await ApiService.getReminders();
-  const clients = await ApiService.getClients();
+  const [invoices, proposals, reminders, clients] = await Promise.all([
+    ApiService.getInvoices(),
+    ApiService.getProposals(),
+    ApiService.getReminders(),
+    ApiService.getClients()
+  ]);
 
   const now = new Date();
 
