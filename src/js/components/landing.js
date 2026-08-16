@@ -13,7 +13,7 @@ export function renderLandingPage(isAuthenticated = false) {
         <div class="landing-header-inner">
           <a href="/" class="landing-brand" data-path="/">
             ${logoSVG}
-            <span class="brand-title-bold">SoloSuite</span>
+            <span class="brand-title-bold">Kayana</span>
           </a>
 
           <nav class="landing-nav-center">
@@ -35,9 +35,9 @@ export function renderLandingPage(isAuthenticated = false) {
 
       <section class="landing-hero-ultra">
         <div class="hero-content-box">
-          <h1 class="hero-huge-headline">The client desk for independent work.</h1>
+          <h1 class="hero-huge-headline">Kayana – Platform invoicing dan manajemen proyek untuk pekerja lepas dan profesional.</h1>
           <p class="hero-subtext-clean">
-            SoloSuite keeps invoices, proposals, payment details, and follow-ups in one calm workspace for Indonesian freelancers.
+            Kelola klien, buat invoice profesional, susun proposal, dan pantau pengingat pembayaran dalam satu ruang kerja minimalis yang tenang.
           </p>
           <div class="hero-cta-wrapper">
             <a href="${appHref}" class="btn btn-primary btn-pill-lg" data-path="${appHref}">
@@ -79,7 +79,7 @@ export function renderLandingPage(isAuthenticated = false) {
             <div class="demo-invoice-paper">
               <div class="demo-doc-top">
                 <div>
-                  <div class="demo-brand-name">SoloSuite</div>
+                  <div class="demo-brand-name">Kayana</div>
                   <div class="demo-user-meta">Ahmad Fikri, Independent Designer</div>
                 </div>
                 <div class="demo-doc-badge">
@@ -199,9 +199,9 @@ export function renderLandingPage(isAuthenticated = false) {
 
           <div class="faq-accordion-list">
             ${[
-              ['Do clients need a SoloSuite account?', 'No. They can open the invoice, read the payment details, transfer to your bank account, and send proof through WhatsApp.'],
+              ['Do clients need a Kayana account?', 'No. They can open the invoice, read the payment details, transfer to your bank account, and send proof through WhatsApp.'],
               ['Can I use the free plan permanently?', 'Yes. The Free plan stays available with monthly limits for clients, invoices, and proposals.'],
-              ['How does payment work?', 'Your own bank details appear on the invoice. SoloSuite helps create the document and the confirmation path; the transfer happens directly between client and freelancer.'],
+              ['How does payment work?', 'Your own bank details appear on the invoice. Kayana helps create the document and the confirmation path; the transfer happens directly between client and freelancer.'],
               ['Can I export PDFs?', 'Yes. Invoices and proposals can be previewed and exported as polished PDF documents.'],
               ['Is my data protected?', 'Authentication and profile data are handled through Supabase, with application data scoped to the signed-in user.']
             ].map(([question, answer]) => `
@@ -226,7 +226,7 @@ export function renderLandingPage(isAuthenticated = false) {
           <div class="footer-brand-column">
             <a href="/" class="landing-brand" data-path="/">
               ${logoSVG}
-              <span class="brand-title-bold">SoloSuite</span>
+              <span class="brand-title-bold">Kayana</span>
             </a>
             <p class="brand-sub">A quieter operating desk for freelance business.</p>
           </div>
@@ -260,7 +260,7 @@ export function renderLandingPage(isAuthenticated = false) {
         </div>
 
         <div class="footer-bottom-bar" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
-          <p>&copy; 2026 SoloSuite. All rights reserved.</p>
+          <p>&copy; 2026 Kayana. All rights reserved.</p>
           <p style="margin:0;">Contact Email: <a href="mailto:xnovaav@gmail.com" style="color:var(--accent-primary); text-decoration:underline;">xnovaav@gmail.com</a></p>
         </div>
       </footer>

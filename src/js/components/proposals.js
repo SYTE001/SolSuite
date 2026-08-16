@@ -227,7 +227,7 @@ export async function getProposalPreviewModalHTML(proposal, formatIDR) {
         <!-- Header -->
         <div style="display:flex; justify-content:space-between; border-bottom:1px solid #e2e8f0; padding-bottom:18px; margin-bottom:24px;">
           <div>
-            <h2 style="font-size:16px; font-weight:800; color:#0f172a; margin:0 0 4px 0;">${escapeHtml(user.company || user.name || 'SoloSuite Provider')}</h2>
+            <h2 style="font-size:16px; font-weight:800; color:#0f172a; margin:0 0 4px 0;">${escapeHtml(user.company || user.name || 'Kayana Provider')}</h2>
             <div style="font-size:11px; color:#64748b;">${escapeHtml(user.email || '')}</div>
           </div>
           <div style="text-align:right;">

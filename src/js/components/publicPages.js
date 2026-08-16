@@ -10,7 +10,7 @@ export function renderPublicHeader(isAuthenticated = false) {
       <div class="landing-header-inner">
         <a href="/" class="landing-brand" data-path="/">
           ${logoSVG}
-          <span class="brand-title-bold">SoloSuite</span>
+          <span class="brand-title-bold">Kayana</span>
         </a>
 
         <nav class="landing-nav-center">
@@ -40,7 +40,7 @@ export function renderPublicFooter() {
         <div class="footer-brand-column">
           <a href="/" class="landing-brand" data-path="/">
             ${logoSVG}
-            <span class="brand-title-bold">SoloSuite</span>
+            <span class="brand-title-bold">Kayana</span>
           </a>
           <p class="brand-sub">A quieter operating desk for freelance business.</p>
         </div>
@@ -74,7 +74,7 @@ export function renderPublicFooter() {
       </div>
 
       <div class="footer-bottom-bar" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
-        <p>&copy; 2026 SoloSuite. All rights reserved.</p>
+        <p>&copy; 2026 Kayana. All rights reserved.</p>
         <p style="margin:0;">Contact Email: <a href="mailto:xnovaav@gmail.com" style="color:var(--accent-primary); text-decoration:underline;">xnovaav@gmail.com</a></p>
       </div>
     </footer>
@@ -93,28 +93,28 @@ export function renderTermsPage(isAuthenticated = false) {
             <span>Legal Documentation</span>
           </div>
           <h1 class="public-title">Terms of Service</h1>
-          <p class="public-subtitle">Syarat & Ketentuan Layanan SoloSuite &bull; Terakhir Diperbarui: 12 Agustus 2026</p>
+          <p class="public-subtitle">Syarat & Ketentuan Layanan Kayana &bull; Terakhir Diperbarui: 12 Agustus 2026</p>
           <hr class="public-divider">
 
           <div class="public-content">
             <section class="public-section">
               <h2>1. Ketentuan Umum</h2>
-              <p>Selamat datang di SoloSuite. Dengan mengakses atau menggunakan platform SoloSuite (aplikasi web dan layanan terkait), Anda setuju untuk terikat oleh Syarat dan Ketentuan Layanan ini. Jika Anda tidak menyetujui bagian mana pun dari ketentuan ini, Anda tidak diperkenankan menggunakan layanan kami.</p>
+              <p>Selamat datang di Kayana. Dengan mengakses atau menggunakan platform Kayana (aplikasi web dan layanan terkait), Anda setuju untuk terikat oleh Syarat dan Ketentuan Layanan ini. Jika Anda tidak menyetujui bagian mana pun dari ketentuan ini, Anda tidak diperkenankan menggunakan layanan kami.</p>
             </section>
 
             <section class="public-section">
               <h2>2. Deskripsi Layanan</h2>
-              <p>SoloSuite menyediakan platform manajemen operasional freelance yang mencakup pembuatan invoice, penyusunan proposal, penjadwalan pengingat pembayaran, manajemen direktori klien, dan fitur terkait. Kami secara berkala memperbarui dan meningkatkan layanan untuk memberikan pengalaman terbaik.</p>
+              <p>Kayana menyediakan platform manajemen operasional freelance yang mencakup pembuatan invoice, penyusunan proposal, penjadwalan pengingat pembayaran, manajemen direktori klien, dan fitur terkait. Kami secara berkala memperbarui dan meningkatkan layanan untuk memberikan pengalaman terbaik.</p>
             </section>
 
             <section class="public-section">
               <h2>3. Akun Pengguna & Akses</h2>
-              <p>Untuk menggunakan fitur workspace SoloSuite, pengguna diwajibkan mendaftar akun dengan informasi yang akurat. Pengguna bertanggung jawab menjaga kerahasiaan kata sandi dan kredensial akun, serta bertanggung jawab penuh atas segala aktivitas di dalam akun tersebut.</p>
+              <p>Untuk menggunakan fitur workspace Kayana, pengguna diwajibkan mendaftar akun dengan informasi yang akurat. Pengguna bertanggung jawab menjaga kerahasiaan kata sandi dan kredensial akun, serta bertanggung jawab penuh atas segala aktivitas di dalam akun tersebut.</p>
             </section>
 
             <section class="public-section">
               <h2>4. Langganan & Pembayaran</h2>
-              <p>SoloSuite menawarkan paket Gratis (Free) dan paket Berlangganan Pro. Rincian harga, kuota bulanan, dan fitur tercantum pada halaman <a href="/pricing" data-path="/pricing">Pricing</a>. Pembayaran paket Pro diproses melalui penyedia pembayaran tepercaya.</p>
+              <p>Kayana menawarkan paket Gratis (Free) dan paket Berlangganan Pro. Rincian harga, kuota bulanan, dan fitur tercantum pada halaman <a href="/pricing" data-path="/pricing">Pricing</a>. Pembayaran paket Pro diproses melalui penyedia pembayaran tepercaya.</p>
             </section>
 
             <section class="public-section">
@@ -124,7 +124,7 @@ export function renderTermsPage(isAuthenticated = false) {
 
             <section class="public-section">
               <h2>6. Batasan Tanggung Jawab</h2>
-              <p>SoloSuite disediakan dengan dasar "sebagaimana adanya" (as-is). Kami tidak bertanggung jawab atas kerugian tidak langsung, kehilangan pendapatan, atau perselisihan pembayaran antara freelancer dan klien mereka.</p>
+              <p>Kayana disediakan dengan dasar "sebagaimana adanya" (as-is). Kami tidak bertanggung jawab atas kerugian tidak langsung, kehilangan pendapatan, atau perselisihan pembayaran antara freelancer dan klien mereka.</p>
             </section>
 
             <section class="public-section">
@@ -152,13 +152,13 @@ export function renderPrivacyPage(isAuthenticated = false) {
             <span>Kebijakan Privasi</span>
           </div>
           <h1 class="public-title">Privacy Policy</h1>
-          <p class="public-subtitle">Perlindungan Data & Privasi Pengguna SoloSuite &bull; Terakhir Diperbarui: 12 Agustus 2026</p>
+          <p class="public-subtitle">Perlindungan Data & Privasi Pengguna Kayana &bull; Terakhir Diperbarui: 12 Agustus 2026</p>
           <hr class="public-divider">
 
           <div class="public-content">
             <section class="public-section">
               <h2>1. Komitmen Privasi Kami</h2>
-              <p>Di SoloSuite, privasi dan keamanan data Anda adalah prioritas utama. Kebijakan Privasi ini menjelaskan bagaimana kami mengumpulkan, mengolah, menyimpan, dan melindungi informasi pribadi serta data bisnis Anda saat menggunakan SoloSuite.</p>
+              <p>Di Kayana, privasi dan keamanan data Anda adalah prioritas utama. Kebijakan Privasi ini menjelaskan bagaimana kami mengumpulkan, mengolah, menyimpan, dan melindungi informasi pribadi serta data bisnis Anda saat menggunakan Kayana.</p>
             </section>
 
             <section class="public-section">
@@ -178,7 +178,7 @@ export function renderPrivacyPage(isAuthenticated = false) {
 
             <section class="public-section">
               <h2>4. Kerahasiaan & Keamanan Data</h2>
-              <p>Kami menerapkan enkripsi standar industri dan keamanan akses data (Row Level Security). SoloSuite <strong>tidak pernah menjual, menyewakan, atau membagikan data pribadi Anda</strong> kepada pihak ketiga untuk keperluan pemasaran.</p>
+              <p>Kami menerapkan enkripsi standar industri dan keamanan akses data (Row Level Security). Kayana <strong>tidak pernah menjual, menyewakan, atau membagikan data pribadi Anda</strong> kepada pihak ketiga untuk keperluan pemasaran.</p>
             </section>
 
             <section class="public-section">
@@ -211,7 +211,7 @@ export function renderContactPage(isAuthenticated = false) {
             <span>Dukungan Pelanggan</span>
           </div>
           <h1 class="public-title">Contact & Support</h1>
-          <p class="public-subtitle">Memiliki pertanyaan, kendala teknis, atau butuh bantuan langganan? Tim SoloSuite siap membantu Anda.</p>
+          <p class="public-subtitle">Memiliki pertanyaan, kendala teknis, atau butuh bantuan langganan? Tim Kayana siap membantu Anda.</p>
           <hr class="public-divider">
 
           <div class="contact-grid">
@@ -245,7 +245,7 @@ export function renderContactPage(isAuthenticated = false) {
           <div class="contact-cta-box">
             <h3 style="margin-top:0; font-size:1.15rem; font-weight:700; color:var(--text-main);">Butuh Bantuan Langsung?</h3>
             <p style="color:var(--text-muted); font-size:0.92rem; margin-bottom:18px;">Klik tombol di bawah ini untuk langsung membuka aplikasi email Anda.</p>
-            <a href="mailto:xnovaav@gmail.com?subject=Tanya%20SoloSuite" class="btn btn-primary btn-pill-lg">
+            <a href="mailto:xnovaav@gmail.com?subject=Tanya%20Kayana" class="btn btn-primary btn-pill-lg">
               <i data-lucide="send" style="width:18px; height:18px;"></i>
               <span>Kirim Email ke xnovaav@gmail.com</span>
             </a>
@@ -276,12 +276,12 @@ export function renderRefundPage(isAuthenticated = false) {
           <div class="public-content">
             <section class="public-section">
               <h2>1. Pembatalan Langganan (Subscription Cancellation)</h2>
-              <p>Anda dapat membatalkan berlangganan paket SoloSuite Pro kapan saja. Setelah pembatalan, Anda tetap memiliki akses penuh ke fitur Pro sampai akhir masa penagihan yang sedang aktif. Akun Anda tidak akan dikenakan tagihan berikutnya dan otomatis beralih ke paket Free setelah masa berlangganan selesai.</p>
+              <p>Anda dapat membatalkan berlangganan paket Kayana Pro kapan saja. Setelah pembatalan, Anda tetap memiliki akses penuh ke fitur Pro sampai akhir masa penagihan yang sedang aktif. Akun Anda tidak akan dikenakan tagihan berikutnya dan otomatis beralih ke paket Free setelah masa berlangganan selesai.</p>
             </section>
 
             <section class="public-section">
               <h2>2. Garansi 7 Hari Uang Kembali (7-Day Money Back Guarantee)</h2>
-              <p>SoloSuite memberikan <strong>Garansi 7 Hari Uang Kembali 100%</strong> untuk pengguna baru yang pertama kali mengupgrade ke paket Pro. Apabila layanan SoloSuite tidak memenuhi ekspektasi Anda dalam waktu 7 hari sejak transaksi pertama, Anda berhak mendapatkan pengembalian dana penuh.</p>
+              <p>Kayana memberikan <strong>Garansi 7 Hari Uang Kembali 100%</strong> untuk pengguna baru yang pertama kali mengupgrade ke paket Pro. Apabila layanan Kayana tidak memenuhi ekspektasi Anda dalam waktu 7 hari sejak transaksi pertama, Anda berhak mendapatkan pengembalian dana penuh.</p>
             </section>
 
             <section class="public-section">

@@ -544,7 +544,7 @@ class App {
           <div style="width:52px; height:52px; margin:0 auto 18px; border-radius:50%; display:flex; align-items:center; justify-content:center; background:var(--danger-bg); color:var(--danger);">
             <i data-lucide="log-out" style="width:24px; height:24px;"></i>
           </div>
-          <h2 style="margin:0 0 10px; color:var(--text-main); font-size:1.15rem; font-weight:700; letter-spacing:-0.02em;">Keluar dari SoloSuite?</h2>
+          <h2 style="margin:0 0 10px; color:var(--text-main); font-size:1.15rem; font-weight:700; letter-spacing:-0.02em;">Keluar dari Kayana?</h2>
           <p style="margin:0; color:var(--text-muted); font-size:0.9rem; line-height:1.55;">Sesi Anda akan diakhiri. Anda harus masuk kembali untuk mengakses data Anda nanti.</p>
           <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:26px;">
             <button type="button" class="btn btn-secondary modal-close">Batal</button>
@@ -780,7 +780,7 @@ class App {
     }
 
     if (mobilePageTitle) {
-      mobilePageTitle.textContent = mobileTitles[this.currentPage] || 'SoloSuite';
+      mobilePageTitle.textContent = mobileTitles[this.currentPage] || 'Kayana';
     }
 
     // Render Views

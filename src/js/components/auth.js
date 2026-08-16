@@ -8,7 +8,7 @@ export function renderAuthPage(isRegister = false) {
     ? 'Kelola klien, invoice, proposal, dan pengingat dalam satu platform terpadu.'
     : 'Masuk untuk mengelola keuangan dan administrasi bisnis solo Anda.';
   const submitText = isRegister ? 'Daftar Akun Baru' : 'Masuk';
-  const toggleLinkText = isRegister ? 'Sudah memiliki akun?' : 'Baru di SoloSuite?';
+  const toggleLinkText = isRegister ? 'Sudah memiliki akun?' : 'Baru di Kayana?';
   const toggleActionText = isRegister ? 'Masuk' : 'Daftar';
   const togglePath = isRegister ? '/login' : '/register';
   const logoSVG = getLogoIconSVG(36);
@@ -20,17 +20,17 @@ export function renderAuthPage(isRegister = false) {
         <div>
           <a href="/" class="landing-brand" data-path="/" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: white;">
             ${logoSVG}
-            <span class="brand-title-bold" style="font-size: 20px; font-weight: 800; letter-spacing: -0.03em;">SoloSuite</span>
+            <span class="brand-title-bold" style="font-size: 20px; font-weight: 800; letter-spacing: -0.03em;">Kayana</span>
           </a>
-          <h1 style="font-size: 38px; font-weight: 850; line-height: 1.1; margin-top: 64px; letter-spacing: -0.03em;">Administrasi bisnis yang tidak merepotkan Anda.</h1>
+          <h1 style="font-size: 38px; font-weight: 850; line-height: 1.1; margin-top: 64px; letter-spacing: -0.03em;">Kayana – Platform invoicing dan manajemen proyek untuk pekerja lepas dan profesional.</h1>
           <p class="brand-sub" style="font-size: 15px; color: var(--text-muted); line-height: 1.6; margin-top: 16px; max-width: 440px;">
-            Invoice profesional, proposal konversi tinggi, CRM klien terpadu, dan agenda tindak lanjut dalam satu dasbor minimalis.
+            Kelola klien, buat invoice profesional, susun proposal, dan pantau pengingat pembayaran dalam satu ruang kerja minimalis yang tenang.
           </p>
         </div>
 
         <div class="auth-quote-card" style="padding: 20px; border-radius: var(--radius-md); background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); backdrop-filter: blur(10px); max-width: 440px;">
           <p style="font-size: 13.5px; line-height: 1.6; font-style: italic; color: rgba(255,255,255,0.85); margin: 0;">
-            "SoloSuite membantu saya melacak invoice overdue secara instan dan meningkatkan konversi proposal proyek hingga 40%."
+            "Kayana membantu saya melacak invoice overdue secara instan dan meningkatkan konversi proposal proyek hingga 40%."
           </p>
           <div style="font-size: 11.5px; font-weight: 700; color: white; margin-top: 10px;">— Sarah K., Konsultan Desain</div>
         </div>
